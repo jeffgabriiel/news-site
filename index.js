@@ -19,3 +19,18 @@ app.set('views', path.join(__dirname, '/views'));
 app.listen(5000,() => {
     console.log("servindo");
 });
+
+app.get('/', (req, res) => {
+    //res.send('home');  //reenderizar
+
+    if(req.query.busca == null){
+        res.render('home',{});
+    }else{
+        res.render('busca',{});
+    }
+});
+
+app.get('/:slug', (req,res) => {
+    //res.send(req.params.slug);
+    res.render('single',{});
+})
