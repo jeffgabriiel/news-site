@@ -1,0 +1,19 @@
+{
+  "name": "sitenoticias",
+  "version": "1.0.0",
+  "description": "Intalar as dependencias:\r     -> npm install express bory-parser ejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffgabriiel/news-site.git"
+  },
+  "author": "jeffgabriiel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeffgabriiel/news-site/issues"
+  },
+  "homepage": "https://github.com/jeffgabriiel/news-site#readme"
+}
