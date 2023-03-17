@@ -5,6 +5,9 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+body{
+    background-image: url('/public/images/papel-de-parede.jpg');
+}
 .title-destaque-descricao a{
     text-decoration: none;
     color: white;
@@ -12,7 +15,7 @@
 
 header{
     padding:8px 0;
-    background-color: #0aacdc;
+    background-color: #525252;
     text-align: center;
 }
 
@@ -39,8 +42,14 @@ header{
     text-decoration: none;
 }
 
+.logo img{
+    text-align: center;
+    font-size: 2px;
+}
+
 .form-busca{
     width:50%;
+    
     text-align: right;
 
 }
@@ -139,6 +148,7 @@ header{
 
   section.outras-noticias{
       background-color: #EAEAEA;
+      background-image: url('/public/images/papel-de-parede.jpg');
       padding:30px 20px;
       text-align: center;
   }
@@ -196,7 +206,7 @@ header{
       height: 56px;
      border: 1px solid #EBEBEB;
      text-decoration: none;
-     color:#0AACDC;
+     color:#27272a;
      border-radius:10px;
      line-height: 56px;
      text-align: center;
@@ -258,7 +268,7 @@ header{
         height: 36px;
         border: 1px solid #EBEBEB;
         text-decoration: none;
-        color:#0AACDC;
+        color:#27272a;
         border-radius:10px;
         line-height: 36px;
         text-align: center;
@@ -267,7 +277,7 @@ header{
 
   footer{
       
-      background-color: #0aacdc;
+      background-color: #27272a;
       text-align: center;
       color:white;
       padding:8px 0;
@@ -277,6 +287,7 @@ header{
   section.noticia{
       padding:20px 0;
       background-color: #EAEAEA;
+      background-image: url('/public/images/papel-de-parede.jpg');
   }
 
   .noticia-single{
