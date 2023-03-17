@@ -71,13 +71,27 @@ app.get('/', (req, res) => {
         })
         
     }else{
-        res.redirect('/');
+
+        Posts.find({title: {$regex: req.query.busca, $options:"i"}}, function(err, posts){
+            //console.log(posts)
+            posts = posts.map(function(val){ 
+                return {
+                    title: val.title,
+                    conteudo: val.conteudo,
+                    descricaoCurta: val.conteudo.substring(0,100),
+                    image: val.image,
+                    slug: val.slug,
+                    categoria: val.categoria,
+                    views: val.views
+                }
+             });
+            res.render('busca', {posts:posts, contagem:posts.length});
+        });
     }
 });
 
 app.get('/:slug', (req,res) => {
     //res.send(req.params.slug);
-    
 
     Posts.findOneAndUpdate(
         {slug: req.params.slug},
@@ -104,4 +118,5 @@ app.get('/:slug', (req,res) => {
             }
         }
     );
+
 })
