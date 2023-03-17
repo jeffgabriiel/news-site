@@ -31,13 +31,14 @@
                 <div class="center">
                     <div class="ultimas">
 
-                        <% for(let i =1; i < posts.length; i++) { %>
+                        <% for(let i = 1; i < posts.length; i++) { %>
                             <div class="box-ultima-single">
                                 <img src="<%= posts[i].image %>"/>
                                 <div class="conteudo-noticia-single">
                                     <h3><%= posts[i].categoria %></h3>
                                     <h2><%= posts[i].title %></h2>
                                     <p><%- posts[i].descricaoCurta %> ...</p>
+                                    <p><%- posts[i].views %> vizualizações</p>
                                     <a href="<%= posts[i].slug %>">Saiba mais</a>
                                 </div>
                             </div>
@@ -47,38 +48,18 @@
                     <div class="mais-lidas">
                         <h3>Mais Lidas</h3>
                         <div class="mais-lidas-noticias">
-                            <div class="mais-lida-noticia-single">
-                                <img src="/public/images/natureza_small.png" />
-                                <div class="texto-mais-lida-single">
-                                    <h4>Natureza</h4>
-                                    <p>A importância da floresta do ártico para a biodiversidade mundial. Qual o impacto o degelo na fauna e flora?</p>
-                                    <a href="/encarar-o-surf">Saiba mais</a>
+                            <% for(let i = 0; i < postsTop.length; i++) { %>
+                                <div class="mais-lida-noticia-single">
+                                    <img src="<%= postsTop[i].image %>"/>
+                                    <div class="conteudo-noticia-single">
+                                        <h3><%= postsTop[i].categoria %></h3>
+                                        <h2><%= postsTop[i].title %></h2>
+                                        <p><%- postsTop[i].descricaoCurta %> ...</p>
+                                        <p><%- postsTop[i].views %> vizualizações</p>
+                                        <a href="<%= postsTop[i].slug %>">Saiba mais</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="mais-lida-noticia-single">
-                                <img src="/public/images/natureza_small.png" />
-                                <div class="texto-mais-lida-single">
-                                    <h4>Natureza</h4>
-                                    <p>A importância da floresta do ártico para a biodiversidade mundial. Qual o impacto o degelo na fauna e flora?</p>
-                                    <a href="/encarar-o-surf">Saiba mais</a>
-                                </div>
-                            </div>
-                            <div class="mais-lida-noticia-single">
-                                <img src="/public/images/natureza_small.png" />
-                                <div class="texto-mais-lida-single">
-                                    <h4>Natureza</h4>
-                                    <p>A importância da floresta do ártico para a biodiversidade mundial. Qual o impacto o degelo na fauna e flora?</p>
-                                    <a href="/encarar-o-surf">Saiba mais</a>
-                                </div>
-                            </div>
-                            <div class="mais-lida-noticia-single">
-                                <img src="/public/images/natureza_small.png" />
-                                <div class="texto-mais-lida-single">
-                                    <h4>Natureza</h4>
-                                    <p>A importância da floresta do ártico para a biodiversidade mundial. Qual o impacto o degelo na fauna e flora?</p>
-                                    <a href="/encarar-o-surf">Saiba mais</a>
-                                </div>
-                            </div>
+                            <% } %>
                         </div>
                     </div>
                 </div>

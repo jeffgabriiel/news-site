@@ -40,21 +40,38 @@ app.get('/', (req, res) => {
             posts = posts.map(function(val){
                 return {
                     title: val.title,
-                    image: val.image,
-                    categotia: val.categotia,
+                    image: val.image,           
+                    categotia: val.categotia,  //dados do mongoDB
                     conteudo: val.conteudo,
                     slug: val.slug,
-                    //dados do database
                     
-                    //dados adicionais:
-                    descricaoCurta: val.conteudo.substring(0,100),
+                    views: val.views,
+                    
+                    descricaoCurta: val.conteudo.substring(0,100), //dados adicionais:
                 }
             })
-            res.render('home',{posts:posts});
+
+            Posts.find({}).sort({'views': -1}).limit(3).exec(function(err,postsTop){ //reinderizar a Home com os posts contados
+
+                // console.log(posts[0]);
+
+                 postsTop = postsTop.map(function(val){ 
+                    return {
+                        title: val.title,
+                        conteudo: val.conteudo,
+                        descricaoCurta: val.conteudo.substring(0,100),
+                        image: val.image,
+                        slug: val.slug,
+                        categoria: val.categoria,
+                        views: val.views
+                    }
+                 });
+                 res.render('home',{posts:posts,postsTop:postsTop});
+             })
         })
         
     }else{
-        res.render('busca',{});
+        res.redirect('/');
     }
 });
 
@@ -68,7 +85,23 @@ app.get('/:slug', (req,res) => {
         {new: true},
         function(err, resposta){
             // console.log(resposta);
-            res.render('single',{noticia:resposta});
+            // res.render('single',{noticia:resposta});
+            if(resposta != null){
+                Posts.find({}).sort({'views': -1}).limit(3).exec(function(err,postsTop){ //reinderizar a Home com os posts contados
+                     postsTop = postsTop.map(function(val){ 
+                        return {
+                            title: val.title,
+                            conteudo: val.conteudo,
+                            descricaoCurta: val.conteudo.substring(0,100),
+                            image: val.image,
+                            slug: val.slug,
+                            categoria: val.categoria,
+                            views: val.views
+                        }
+                     });
+                     res.render('single',{noticia:resposta,postsTop:postsTop});
+                 });
+            }
         }
     );
 })
