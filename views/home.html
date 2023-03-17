@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>JG News</title>
 </head>
 <body>
     
@@ -16,10 +16,10 @@
                     <div class="overlay-destaque"></div>
                         <div class="title-destaque-descricao">
                             <!--feito em off o link aqui e adicionado nos estilos-->
-                            <a href="/slug-aqui"><h2>Quer Fugir das Praias de Verão?</h2></a>
-                            <p>Donec consectetur libero eget bibendum ullamcorper. Quisque auctor nulla eu enim ultrices laoreet. Na..</p>
+                            <a href="<%= posts[0].slug %>"><h2><%= posts[0].title %></h2></a>
+                            <p><%- posts[0].descricaoCurta %> ... </p>
                         </div>
-                    <img src="/public/images/landscape.jpg" />
+                    <img src="<%= posts[0].image %>" />
                 </div>
             </div>
         </section>
@@ -30,24 +30,19 @@
                 <br><br>
                 <div class="center">
                     <div class="ultimas">
-                        <div class="box-ultima-single">
-                            <img src="/public/images/noticia.png" />
-                            <div class="conteudo-noticia-single">
-                                <h3>Natureza e Geral</h3>
-                                <h2>Como Encarar o Surf em Floripa</h2>
-                                <p>A água gelada e o vento pode acabar com a sua felicidade de ir para a água. Cientistas afirmam que a chance de hipotermia é real e você precisa se cuidar. Veja como.</p>
-                                <a href="/encarar-o-surf">Saiba mais</a>
+
+                        <% for(let i =1; i < posts.length; i++) { %>
+                            <div class="box-ultima-single">
+                                <img src="<%= posts[i].image %>"/>
+                                <div class="conteudo-noticia-single">
+                                    <h3><%= posts[i].categoria %></h3>
+                                    <h2><%= posts[i].title %></h2>
+                                    <p><%- posts[i].descricaoCurta %> ...</p>
+                                    <a href="<%= posts[i].slug %>">Saiba mais</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="box-ultima-single">
-                            <img src="/public/images/noticia.png" />
-                            <div class="conteudo-noticia-single">
-                            <h3>Natureza e Geral</h3>
-                            <h2>Como Encarar o Surf em Floripa</h2>
-                            <p>A água gelada e o vento pode acabar com a sua felicidade de ir para a água. Cientistas afirmam que a chance de hipotermia é real e você precisa se cuidar. Veja como.</p>
-                            <a href="/encarar-o-surf">Saiba mais</a>
-                        </div>
-                        </div>
+                        <% } %>
+                        
                     </div>
                     <div class="mais-lidas">
                         <h3>Mais Lidas</h3>

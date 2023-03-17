@@ -8,7 +8,10 @@ const path = require('path');
 
 const app = express();
 
-mongoose.connect('mongodb+srv://root:IggMv0g0qAKh3Oqa@cluster0.igiwpog.mongodb.net/?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true}).then(function(){
+var posts = require('./Posts.js');
+const Posts = require('./Posts.js');
+
+mongoose.connect('mongodb+srv://root:IggMv0g0qAKh3Oqa@cluster0.igiwpog.mongodb.net/news-site?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true}).then(function(){
     console.log('conectado com sucesso');
 }).catch(function(err){
     console.log(err.message)
@@ -32,7 +35,24 @@ app.get('/', (req, res) => {
     //res.send('home');  //reenderizar
 
     if(req.query.busca == null){
-        res.render('home',{});
+        Posts.find({}).sort({'_id': -1}).exec(function(err, posts){
+
+            posts = posts.map(function(val){
+                return {
+                    title: val.title,
+                    image: val.image,
+                    categotia: val.categotia,
+                    conteudo: val.conteudo,
+                    slug: val.slug,
+                    //dados do database
+                    
+                    //dados adicionais:
+                    descricaoCurta: val.conteudo.substring(0,100),
+                }
+            })
+            res.render('home',{posts:posts});
+        })
+        
     }else{
         res.render('busca',{});
     }
@@ -40,5 +60,15 @@ app.get('/', (req, res) => {
 
 app.get('/:slug', (req,res) => {
     //res.send(req.params.slug);
-    res.render('single',{});
+    
+
+    Posts.findOneAndUpdate(
+        {slug: req.params.slug},
+        {$inc: {views: 1}},
+        {new: true},
+        function(err, resposta){
+            // console.log(resposta);
+            res.render('single',{noticia:resposta});
+        }
+    );
 })

@@ -5,9 +5,7 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-body{
-    background-image: url('/public/images/papel-de-parede.jpg');
-}
+
 .title-destaque-descricao a{
     text-decoration: none;
     color: white;
@@ -15,7 +13,7 @@ body{
 
 header{
     padding:8px 0;
-    background-color: #525252;
+    background-color: #00BFFF;
     text-align: center;
 }
 
@@ -148,7 +146,7 @@ header{
 
   section.outras-noticias{
       background-color: #EAEAEA;
-      background-image: url('/public/images/papel-de-parede.jpg');
+      
       padding:30px 20px;
       text-align: center;
   }
@@ -277,7 +275,7 @@ header{
 
   footer{
       
-      background-color: #27272a;
+      background-color: #00BFFF;
       text-align: center;
       color:white;
       padding:8px 0;
@@ -287,7 +285,7 @@ header{
   section.noticia{
       padding:20px 0;
       background-color: #EAEAEA;
-      background-image: url('/public/images/papel-de-parede.jpg');
+      
   }
 
   .noticia-single{
