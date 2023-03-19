@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .header-panel{
+            text-align: center;
+            width: 100%;
+            padding: 10px;
+            background-color: #00a1ff;
+            color: white;
+        }
+
+        form{
+            padding: 16px;
+            margin:29px 0;
+        }
+
+        form input{
+            margin-bottom: 20px;
+            width: 100%;
+            height: 40px;
+            padding-left: 10px;
+            border: 1px solid #ccc;
+        }
+
+        form textarea{
+            width: 100%;
+            height: 120px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        form input[type=submit]{
+            width: 100%;
+            height: 40px;
+            background-color: #00a1ff;
+            cursor: pointer;
+            color: white;
+        }
+    
+    </style>
+</head>
+<body>
+
+    <div class="header-panel">
+        <h2>Adicionar notícias</h2>
+    </div>
+    <form method="post" enctype="multipart/form-data" class="form-panel-noticias" action="/admin/cadastro"> <!-- enctype é pra aceitar upload de arquivos-->
+        <input type="text" name="titulo_noticia" placeholder="Título da notícia">
+        <input type="file" name="arquivo">
+        <input type="text" name="slug" placeholder="Slug">
+        <textarea name="noticia" placeholder="Notícia..."></textarea>
+        <input type="submit" name="acao" value="Cadastrar">
+    </form>
+    <br/>
+    
+    <div class="header-panel">
+        <h2>Listando Notícias</h2>
+        
+    </div>
+    
+    <% for(let i = 0; i < posts.length; i++) { %>
+        <div class="box-ultima-single">
+            <div class="noticia-single" style="margin: 20px;margin-top: 20px; border-bottom: 2px dashed #ccc; padding: 10px 0; display: flex; justify-content: space-between;">
+                <p>Título da notícia: <%= posts[i].title %> </p>
+                <a href="/admin/deletar/<%= posts[i].id %>">X</a>
+            </div>
+        </div>
+    <% } %>
+
+</body>
+</html>
